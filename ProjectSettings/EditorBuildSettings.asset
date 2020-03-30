@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Intro/Intro.unity
+    guid: fc5ab3361f74a1545b18841715838751
+  - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 21b2ab3e896a0634181cac7dbd27515e
   - enabled: 1
-    path: Assets/Scenes/Intro/IntroDialogue.unity
+    path: Assets/Scenes/General/GameOver.unity
+    guid: d41d3f8216849b64685971f9e71af96d
+  - enabled: 1
+    path: Assets/Scenes/Intro/GameIntro/IntroDialogue.unity
     guid: 37d777a6e95cbd54fbdff62a68a197d9
   - enabled: 1
-    path: Assets/Scenes/Intro/2D/IntroLevel2D.unity
+    path: Assets/Scenes/Intro/GameIntro/2D/IntroLevel2D.unity
     guid: 23766687e43ad3e44935da47f642c236
   m_configObjects: {}
