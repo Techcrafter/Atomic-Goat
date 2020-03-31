@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAirBomber2DManager : MonoBehaviour
 {
-	bool dropping;
+	bool Dropping;
 	
 	public GameObject AirBomb;
 	
@@ -20,9 +20,9 @@ public class EnemyAirBomber2DManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Random.Range(1, 425) == 1 && !dropping)
+        if(Random.Range(1, 425) == 1 && !Dropping)
 		{
-			dropping = true;
+			Dropping = true;
 			gameObject.GetComponent<AudioSource>().clip = AirBombDropWarningSound;
 			gameObject.GetComponent<AudioSource>().Play();
 			StartCoroutine(WaitForWarningFinished());
@@ -33,7 +33,7 @@ public class EnemyAirBomber2DManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(2.175f);
 		Destroy(Instantiate(AirBomb, new Vector3(transform.position.x, transform.position.y - 0.5f, 0), transform.rotation), 1.9f);
-		dropping = false;
+		Dropping = false;
 		gameObject.GetComponent<AudioSource>().clip = NoiseSound;
 		gameObject.GetComponent<AudioSource>().Play();
 	}

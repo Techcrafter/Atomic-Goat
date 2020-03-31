@@ -530,7 +530,7 @@ MonoBehaviour:
     game is a mix of 2D and 3D scenes with a lot of crazy
 
     stuff, which you can
-    explore later on.
+    explore later.
 
 
     At first, you start as an atomic goat, with the mission,
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855119d7995114742af0d05aaa0ae398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 2
+  levelToLoad: 4
 --- !u!1001 &1155554541
 PrefabInstance:
   m_ObjectHideFlags: 0

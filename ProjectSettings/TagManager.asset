@@ -7,7 +7,6 @@ TagManager:
   - Deadline
   - 1HpPlayerDamageObject
   - 1HpEnemyDamageObject
-  - 1HpEnemy
   layers:
   - Default
   - TransparentFX
