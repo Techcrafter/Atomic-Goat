@@ -62,22 +62,6 @@ public class GrenadeGuy2DManager : MonoBehaviour
 				gameObject.GetComponent<SpriteRenderer>().enabled = true;
 				yield return new WaitForSeconds(0.2f);
 				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
 				yield return new WaitForSeconds(0.1f);
 				gameObject.GetComponent<SpriteRenderer>().enabled = true;
 				yield return new WaitForSeconds(0.1f);
@@ -98,6 +82,7 @@ public class GrenadeGuy2DManager : MonoBehaviour
 		switch(collider.gameObject.tag)
 		{
 			case "1HpEnemyDamageObject":
+				Destroy(collider.gameObject);
 				StartCoroutine(Hitted(1));
 				break;
 			case "Deadline":

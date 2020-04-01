@@ -16,11 +16,17 @@ public class SceneLoader : MonoBehaviour
     public void LoadScene(int BuildIndex)
 	{
 		LoadingText.SetActive(true);
-		if(BuildIndex == 6 && PlayerPrefs.GetInt("IntroCompleted") == 0)
+		if(BuildIndex == 7 && PlayerPrefs.GetInt("IntroCompleted") == 0)
 		{
-			BuildIndex = 6;
+			BuildIndex = 3;
 		}
 		Application.LoadLevel(BuildIndex);
+	}
+	
+	public void LoadRespawnScene()
+	{
+		LoadingText.SetActive(true);
+		Application.LoadLevel(PlayerPrefs.GetInt("RespawnScene"));
 	}
 	
 	public void Quit()
