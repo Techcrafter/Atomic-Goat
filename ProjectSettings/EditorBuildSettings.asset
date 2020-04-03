@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 21b2ab3e896a0634181cac7dbd27515e
   - enabled: 1
-    path: Assets/Scenes/Menus/GameOver.unity
+    path: Assets/Scenes/Menus/MissionFailed.unity
     guid: d41d3f8216849b64685971f9e71af96d
   - enabled: 1
     path: Assets/Scenes/Intro/GameIntro/IntroDialogue.unity
