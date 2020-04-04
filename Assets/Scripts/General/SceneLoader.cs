@@ -16,9 +16,13 @@ public class SceneLoader : MonoBehaviour
     public void LoadScene(int BuildIndex)
 	{
 		LoadingText.SetActive(true);
-		if(BuildIndex == 7 && PlayerPrefs.GetInt("IntroCompleted") == 0)
+		if(BuildIndex == 8 && PlayerPrefs.GetInt("IntroState") == 0)
 		{
 			BuildIndex = 3;
+		}
+		else if(BuildIndex == 8 && PlayerPrefs.GetInt("IntroState") == 1)
+		{
+			BuildIndex = 6;
 		}
 		Application.LoadLevel(BuildIndex);
 	}
