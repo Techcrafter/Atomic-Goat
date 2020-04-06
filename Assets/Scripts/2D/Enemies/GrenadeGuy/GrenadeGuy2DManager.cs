@@ -34,47 +34,44 @@ public class GrenadeGuy2DManager : MonoBehaviour
 	
 	IEnumerator Hitted(int HpToLose)
 	{
-		if(!HitCooldown)
+		HitCooldown = true;
+		HP = HP - HpToLose;
+		if(HP <= 0)
 		{
-			HitCooldown = true;
-			HP = HP - HpToLose;
-			if(HP <= 0)
-			{
-				gameObject.GetComponent<AudioSource>().clip = KilledSound;
-				gameObject.GetComponent<AudioSource>().Play();
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				Destroy(gameObject);
-			}
-			else
-			{
-				gameObject.GetComponent<AudioSource>().clip = HittedSound;
-				gameObject.GetComponent<AudioSource>().Play();
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.2f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				yield return new WaitForSeconds(0.1f);
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
-			}
-			HitCooldown = false;
+			gameObject.GetComponent<AudioSource>().clip = KilledSound;
+			gameObject.GetComponent<AudioSource>().Play();
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			Destroy(gameObject);
 		}
+		else
+		{
+			gameObject.GetComponent<AudioSource>().clip = HittedSound;
+			gameObject.GetComponent<AudioSource>().Play();
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.2f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.2f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.1f);
+			gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		}
+		HitCooldown = false;
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider)
@@ -82,8 +79,11 @@ public class GrenadeGuy2DManager : MonoBehaviour
 		switch(collider.gameObject.tag)
 		{
 			case "1HpEnemyDamageObject":
-				Destroy(collider.gameObject);
-				StartCoroutine(Hitted(1));
+				if(!HitCooldown)
+				{
+					Destroy(collider.gameObject);
+					StartCoroutine(Hitted(1));
+				}
 				break;
 			case "Deadline":
 				StartCoroutine(Hitted(9999));

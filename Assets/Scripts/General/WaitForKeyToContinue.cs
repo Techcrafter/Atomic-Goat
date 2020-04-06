@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaitForKeyToContinue : MonoBehaviour
 {
 	GameObject LoadingText;
 	
-	public int SceneToLoad;
+	public string SceneToLoad;
 	
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class WaitForKeyToContinue : MonoBehaviour
         if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Cancel") || Input.GetButtonDown("Jump"))
 		{
 			LoadingText.SetActive(true);
-			Application.LoadLevel(SceneToLoad);
+			SceneManager.LoadScene(SceneToLoad);
 		}
     }
 }

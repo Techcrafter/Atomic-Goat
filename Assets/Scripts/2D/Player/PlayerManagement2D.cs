@@ -167,9 +167,9 @@ public class PlayerManagement2D : MonoBehaviour
 				gameObject.GetComponent<AudioSource>().clip = PlayerDiesSound;
 				gameObject.GetComponent<AudioSource>().Play();
 				yield return new WaitForSeconds(1.0f);
-				PlayerPrefs.SetInt("RespawnScene", SceneManager.GetActiveScene().buildIndex);
+				PlayerPrefs.SetString("RespawnScene", SceneManager.GetActiveScene().name);
 				LoadingText.SetActive(true);
-				Application.LoadLevel(2);
+				SceneManager.LoadScene("MissionFailed");
 			}
 			else
 			{

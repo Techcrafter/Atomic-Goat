@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerScene2D : MonoBehaviour
 {
     public string TagThatTriggers;
-	public int SceneToLoad;
+	public string SceneToLoad;
 	
 	GameObject LoadingText;
 	
@@ -19,7 +20,7 @@ public class TriggerScene2D : MonoBehaviour
 		if(collider.gameObject.tag == TagThatTriggers)
 		{
 			LoadingText.SetActive(true);
-			Application.LoadLevel(SceneToLoad);
+			SceneManager.LoadScene(SceneToLoad);
 		}
 	}
 }

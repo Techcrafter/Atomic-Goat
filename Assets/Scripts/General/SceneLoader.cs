@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -13,28 +14,39 @@ public class SceneLoader : MonoBehaviour
         LoadingText.SetActive(false);
     }
 
-    public void LoadScene(int BuildIndex)
+    public void LoadScene(string SceneName)
 	{
 		LoadingText.SetActive(true);
-		if(BuildIndex == 8 && PlayerPrefs.GetInt("IntroState") == 0)
+		if(SceneName == "SingleplayerMenu" && PlayerPrefs.GetInt("IntroState") == 0)
 		{
-			BuildIndex = 3;
+			SceneName = "IntroDialogue";
 		}
-		else if(BuildIndex == 8 && PlayerPrefs.GetInt("IntroState") == 1)
+		else if(SceneName == "SingleplayerMenu" && PlayerPrefs.GetInt("IntroState") == 1)
 		{
-			BuildIndex = 6;
+			SceneName = "IntroDialogue2";
 		}
-		Application.LoadLevel(BuildIndex);
+		SceneManager.LoadScene(SceneName);
 	}
 	
 	public void LoadRespawnScene()
 	{
 		LoadingText.SetActive(true);
-		Application.LoadLevel(PlayerPrefs.GetInt("RespawnScene"));
+		SceneManager.LoadScene(PlayerPrefs.GetString("RespawnScene"));
+	}
+	
+	public void DeleteProgress()
+	{
+		LoadingText.SetActive(true);
+		
+		//Delete PlayerPrefs that are used to save the game progress
+		PlayerPrefs.SetInt("IntroState", 0);
+		
+		SceneManager.LoadScene("MainMenu");
 	}
 	
 	public void Quit()
 	{
+		LoadingText.SetActive(true);
 		Application.Quit();
 	}
 }
